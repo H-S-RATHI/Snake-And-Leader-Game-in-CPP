@@ -32,37 +32,37 @@ int main() {
   int current[maxPlayer] = {0};
   int player = 0;
 
-  cout << "\n\n\t\t\tWelcome to the Snake and Ladder Game!" << endl;
-  cout << "\t\t\tPress Enter to start the game...";
+  cout << "\n\n\t\t\t\tWelcome to the Snake and Ladder Game!" << endl;
+  cout << "\t\t\t\tPress Enter to start the game...";
   cin.get(); // Wait for a key press
 
   while (!gameOver) {
     system(CLEAR_SCREEN);
-    cout << "\n\n\t\t\tSnake and Ladder Game!!" << endl;
-    cout << "\t\t\tCurrent Player " << player + 1 << endl;
-    cout << "\t\t\t=====================" << endl;
+    cout << "\n\n\t\t\t\tSnake and Ladder Game!!" << endl;
+    cout << "\t\t\t\tCurrent Player " << player + 1 << endl;
+    cout << "\t\t\t\t=====================" << endl;
 
     for (int i = 0; i < maxPlayer; i++) {
-      cout << "\t\t\tPlayer " << i + 1 << " is at Position " << current[i]
+      cout << "\t\t\t\tPlayer " << i + 1 << " is at Position " << current[i]
            << endl;
     }
 
-    cout << "\t\t\t=========================" << endl;
+    cout << "\t\t\t\t=========================" << endl;
 
     int roll = dice();
-    cout << "\t\t\tPlayer " << player + 1 << " rolled a " << roll << endl;
+    cout << "\t\t\t\tPlayer " << player + 1 << " rolled a " << roll << endl;
 
     current[player] += roll;
 
     if (current[player] >= board) {
-      cout << "\t\t\tPlayer " << player + 1 << " wins!" << endl << endl;
+      cout << "\t\t\t\tPlayer " << player + 1 << " wins!" << endl << endl;
       gameOver = true;
       break;
     }
 
     for (size_t i = 0; i < sizeof(ladder) / sizeof(ladder[0]); i++) {
       if (current[player] == ladder[i]) {
-        cout << "\t\t\tPlayer " << player + 1
+        cout << "\t\t\t\tPlayer " << player + 1
              << " climbed a ladder to position " << ladder[i] + dice() << endl;
         current[player] = ladder[i] + dice();
       }
@@ -70,7 +70,7 @@ int main() {
 
     for (size_t i = 0; i < sizeof(snake) / sizeof(snake[0]); i++) {
       if (current[player] == snake[i]) {
-        cout << "\t\t\tPlayer " << player + 1
+        cout << "\t\t\t\tPlayer " << player + 1
              << " is bitten by a snake to position " << snake[i] - dice()
              << endl;
         current[player] = snake[i] - dice();
@@ -84,7 +84,8 @@ int main() {
 
     player = (player + 1) % maxPlayer;
 
-    cout << "\n\n\t\t\tPlayer " << player + 1 << " Press Enter to continue...";
+    cout << "\n\n\t\t\t\tPlayer " << player + 1
+         << " Press Enter to continue...";
     cin.get(); // Wait for a key press
   }
 
